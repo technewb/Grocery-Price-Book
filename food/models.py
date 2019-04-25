@@ -5,3 +5,6 @@ class Food(models.Model):
 
     def __str__(self):
         return self.food_name
+
+    def get_name(self):
+        return self.food_name
