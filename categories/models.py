@@ -5,3 +5,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_name(self):
+        '''Return string of category name'''
+        return self.name
