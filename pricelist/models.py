@@ -1,14 +1,5 @@
 from django.db import models
 
-class Food(models.Model):
-    food_name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.food_name
-
-    def get_name(self):
-        return self.food_name
-
 class Category(models.Model):
     name = models.CharField(max_length=200)
 
@@ -18,6 +9,16 @@ class Category(models.Model):
     def get_name(self):
         '''Return string of category name'''
         return self.name
+
+class Food(models.Model):
+    food_name = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, default='', null=True, blank=True)
+
+    def __str__(self):
+        return self.food_name
+
+    def get_name(self):
+        return self.food_name
 
 class Store(models.Model):
     store_name = models.CharField(max_length=200)
