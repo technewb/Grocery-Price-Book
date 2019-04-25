@@ -2,4 +2,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Hello, world. You are the stores index.")
+    return HttpResponse("Hello, world!")
