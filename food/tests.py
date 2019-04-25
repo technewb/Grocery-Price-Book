@@ -1,3 +1,8 @@
 from django.test import TestCase
+from .models import Food
 
-# Create your tests here.
+class FoodModelTests(TestCase):
+
+    def test_name_return_string(self):
+        food_name = Food(food_name='Beans')
+        self.assertEqual(food_name.get_name(), 'Beans')
