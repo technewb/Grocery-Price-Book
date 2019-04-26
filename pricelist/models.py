@@ -44,7 +44,10 @@ class Unit(models.Model):
     unit = models.CharField(max_length=10)
 
     def __str__(self):
-        return (self.unit)
+        return self.unit
+
+    def get_unit(self):
+        return self.unit
 
 class Price(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -75,6 +78,7 @@ class Price(models.Model):
     
     def get_price(self):
         '''Returns string of item's price'''
+        # TODO: Can I enforce two decimal places?
         return self.price
     
     def is_on_sale(self):
@@ -82,12 +86,12 @@ class Price(models.Model):
         return self.on_sale
 
     def get_date(self):
-        '''Returns string of item's date entry'''
-        return self.date
+        '''Returns string of item's date entry without timestamp'''
+        return self.date.date()
 
     def get_sale_expiration(self):
         '''Returns string of item's sale expiration date'''
-        return self.expiration_date
+        return self.expiration_date.date()
     
     # TODO: Can I change to exactly date when entering data?
     def is_sale_expired(self):
@@ -98,7 +102,7 @@ class Price(models.Model):
     
     def get_unit(self):
         '''Returns string of item's unit of measurement'''
-        return self.unit
+        return self.unit.get_unit()
     
     def get_amount(self):
         '''Returns amount of product in item/price'''
