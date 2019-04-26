@@ -10,7 +10,7 @@ class FoodModelTests(TestCase):
         cls.food = Food(food_name="Beans", category=category)
 
     def test_name_return_string(self):
-        '''Return string of food name'''
+        '''get_name() return string of food name'''
         self.assertEqual(self.food.get_name(), 'Beans')
 
     def test_get_category(self):
