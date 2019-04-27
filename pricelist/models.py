@@ -7,47 +7,33 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-    
-    def get_name(self):
-        '''Return string of category name'''
-        return self.name
 
 class Food(models.Model):
-    food_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, default='', null=True, blank=True)
 
     def __str__(self):
-        return self.food_name
+        return f'{self.name} ({self.category})'
 
-    def get_name(self):
-        return self.food_name
-
-    def get_category(self):
-        return self.category.get_name()
+    @property
+    def category_name(self):
+        return self.category.name
 
 class Store(models.Model):
-    store_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     location = models.CharField(max_length=500)
 
     def __str__(self):
-        return (self.store_name)
-        
-    def get_name(self):
-        '''Returns a string of the store name'''
-        return self.store_name
-        
-    def get_location(self):
-        '''Returns a string of the store's location'''
-        return self.location
+        return f'{self.name} - {self.location}'
 
 class Unit(models.Model):
-    unit = models.CharField(max_length=10)
+    name = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.unit
+        return self.name
 
     def get_unit(self):
-        return self.unit
+        return self.name
 
 class Price(models.Model):
     store = models.ForeignKey(Store, on_delete=models.CASCADE)
@@ -64,62 +50,21 @@ class Price(models.Model):
     def __str__(self):
         return (f'{self.food} ${(self.price / self.amount):.2f} per {self.unit} - {self.store}')
     
-    def get_store(self):
-        '''
-        Returns string of items's store
-        '''
-        return self.store.get_name()
+    @property
+    def store_name(self):
+        '''Returns string of store name'''
+        return self.store.name
     
-    def get_food(self):
-        '''
-        Returns string of item's food type/name
-        '''
-        return self.food.get_name()
+    @property
+    def food_name(self):
+        '''Returns string of food name'''
+        return self.food.name
     
-    def get_brand(self):
-        '''
-        Returns string of item's brand
-        '''
-        return self.brand
-    
-    def get_price(self):
-        '''
-        Returns string of item's price
-        '''
-        # TODO: Can I enforce two decimal places?
-        return self.price
-    
-    def is_on_sale(self):
-        '''
-        Returns boolean if item on sale or not
-        '''
-        return self.on_sale
+    @property
+    def unit_name(self):
+        '''Returns string of unit name'''
+        return self.unit.name
 
-    def get_date(self):
-        '''
-        Returns string of item's date entry without timestamp
-        '''
-        return self.date.date()
-
-    def get_sale_expiration(self):
-        '''
-        Returns datetime object of item's sale expiration date
-        '''
-        return self.expiration_date.date()
-    
-    def get_unit(self):
-        '''
-        Returns string of item's unit of measurement
-        '''
-        return self.unit.get_unit()
-    
-    def get_amount(self):
-        '''
-        Returns amount of product in item/price
-        '''
-        return self.amount
-    
-    # TODO: Can I change to exactly date when entering data?
     def is_sale_expired(self):
         '''
         Returns boolean if sale expired
