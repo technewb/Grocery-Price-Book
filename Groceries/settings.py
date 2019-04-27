@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from Groceries.secret import SECRET_KEY as KEY
+from Groceries.secret import SECRET_KEY, TIME_ZONE as KEY, ZONE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'US'
+TIME_ZONE = ZONE
 
 USE_I18N = True
 
