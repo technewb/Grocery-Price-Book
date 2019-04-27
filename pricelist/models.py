@@ -66,9 +66,7 @@ class Price(models.Model):
         return self.unit.name
 
     def is_sale_expired(self):
-        '''
-        Returns boolean if sale expired
-        '''
+        '''Returns boolean if sale expired'''
         if self.expiration_date.date() < datetime.now().date():
             return True
         return False
