@@ -103,3 +103,5 @@ class PriceModelTests(TestCase):
     def test_is_sale_expired(self):
         '''is_sale_expired() returns True for expiration date whose expiration_date was yesterday'''
         self.assertEqual(self.item_price.is_sale_expired(), True)
+
+    # TODO: Add test to check for False is_sale_expired()
