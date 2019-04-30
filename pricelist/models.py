@@ -42,7 +42,7 @@ class Price(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=2)
     on_sale = models.BooleanField()
     date = models.DateField()
-    expiration_date = models.DateField(blank=True)
+    expiration_date = models.DateField(blank=True, null=True)
     # TODO: May need to figure out how to deal when using math
     unit = models.ForeignKey(
         Unit, on_delete=models.SET_NULL, null=True, blank=True)
@@ -56,3 +56,8 @@ class Price(models.Model):
         if self.expiration_date.date() < datetime.now().date():
             return True
         return False
+
+    class Meta:
+        ordering = ('date',)
+
+# TODO: Meta Model Class ?
