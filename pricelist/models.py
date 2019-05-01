@@ -4,6 +4,10 @@ from datetime import datetime
 
 
 class Category(models.Model):
+    """
+    Model to categorize food for sorting purposes
+    :param name: name column as char with max of 200 characters
+    """
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -28,7 +32,9 @@ class Store(models.Model):
 
 
 class Unit(models.Model):
-    '''Unit of measurement'''
+    """
+    Unit of measurement model
+    """
     name = models.CharField(max_length=10)
 
     def __str__(self):
