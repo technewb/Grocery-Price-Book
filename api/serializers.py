@@ -1,18 +1,26 @@
 from rest_framework import serializers
 from pricelist.models import Category, Food
 
-class CategorySerializer(serializers.ModelSerializer):
+# Serializers define the API representation
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
     """
-    Serializer class for Category model from ``pricelist.models``
+    Hyperlinked serializer class for Category model from ``pricelist.models``
     """
+
     class Meta:
         model = Category
-        fields = ('id', 'name')
+        fields = ('url', 'id', 'name')
 
 class FoodSerializer(serializers.ModelSerializer):
     """
     Serializer class for Category model from ``pricelist.models``
     """
+    # Return string instead of id for category
+    # category = serializers.StringRelatedField()
+    category = CategorySerializer(
+        read_only=True
+    )
+
     class Meta:
         model = Food
-        fields = ('id', 'name', 'category')
+        fields = ('url', 'id', 'name', 'category')
