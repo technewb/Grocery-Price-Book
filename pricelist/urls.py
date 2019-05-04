@@ -28,15 +28,15 @@ food_detail = FoodViewSet.as_view({
 
 urlpatterns = [
     # API root
-    path('', api_root),
+    path('api', api_root),
     # List of categories
-    path('categories/', category_list, name='category-list'),
+    path('api/categories/', category_list, name='category-list'),
     # Category detail
-    path('categories/<int:pk>', category_detail, name='category-detail'),
+    path('api/categories/<int:pk>', category_detail, name='category-detail'),
     # List of food
-    path('food/', food_list, name='food-list'),
+    path('api/food/', food_list, name='food-list'),
     # Food detail
-    path('food/<int:pk>', food_detail, name='food-detail'),
+    path('api/food/<int:pk>', food_detail, name='food-detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
