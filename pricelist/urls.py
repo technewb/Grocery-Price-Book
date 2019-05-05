@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from pricelist.views import CategoryViewSet, api_root, FoodViewSet
+from . import views
 
 category_list = CategoryViewSet.as_view({
     'get': 'list',
@@ -27,6 +28,7 @@ food_detail = FoodViewSet.as_view({
 })
 
 urlpatterns = [
+    path('', views.index, name='index'),
     # API root
     path('api', api_root),
     # List of categories
