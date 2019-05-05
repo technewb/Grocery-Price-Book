@@ -18,9 +18,15 @@ def api_root(request, format=None):
 
 # Defines view behavior
 class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    Provides basic CRUD for Category model
+    """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
 class FoodViewSet(viewsets.ModelViewSet):
+    """
+    Provides basic CRUD for Food model
+    """
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
