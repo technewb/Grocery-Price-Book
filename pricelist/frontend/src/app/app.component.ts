@@ -7,7 +7,7 @@ import { CategoryService } from './category.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Angular';
+  title = 'Grocery Price Book';
 
 /**
  * An array of all the Category objects from API
