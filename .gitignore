@@ -2,7 +2,7 @@
 .vscode/
 
 # virtualenv
-groceries/
+.groceries/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

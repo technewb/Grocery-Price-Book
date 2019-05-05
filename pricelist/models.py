@@ -4,6 +4,10 @@ from datetime import datetime
 
 
 class Category(models.Model):
+    """
+    Model to categorize food for sorting purposes
+    :param name: name column as char with max of 200 characters
+    """
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -28,7 +32,9 @@ class Store(models.Model):
 
 
 class Unit(models.Model):
-    '''Unit of measurement'''
+    """
+    Unit of measurement model
+    """
     name = models.CharField(max_length=10)
 
     def __str__(self):
@@ -42,7 +48,7 @@ class Price(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=2)
     on_sale = models.BooleanField()
     date = models.DateField()
-    expiration_date = models.DateField(blank=True)
+    expiration_date = models.DateField(blank=True, null=True)
     # TODO: May need to figure out how to deal when using math
     unit = models.ForeignKey(
         Unit, on_delete=models.SET_NULL, null=True, blank=True)
@@ -56,3 +62,8 @@ class Price(models.Model):
         if self.expiration_date.date() < datetime.now().date():
             return True
         return False
+
+    class Meta:
+        ordering = ('date',)
+
+# TODO: Meta Model Class ?

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from backend.Groceries.secret import SECRET_KEY as KEY, TIME_ZONE as ZONE
+from Groceries.secret import SECRET_KEY as KEY, TIME_ZONE as ZONE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pricelist.apps.PricelistConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pricelist.apps.PricelistConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#       'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }
