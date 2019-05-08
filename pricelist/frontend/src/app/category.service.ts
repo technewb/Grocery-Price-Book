@@ -8,7 +8,7 @@ export class CategoryService {
 
     // Uses http.get() to load data from API endpoint
     list() {
-        return this.http.get('../api/categories')
+        return this.http.get('../api/categories/')
     }
 
 }

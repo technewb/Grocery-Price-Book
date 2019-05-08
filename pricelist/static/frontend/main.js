@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n</div>\n<h2>Categories: </h2>\n<ul>\n  <div *ngFor=\"let category of categories\">\n    <li>{{ category.name }}</li>\n  </div>\n</ul>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    {{ title }}!\n  </h1>\n</div>\n<h2>Categories: </h2>\n<ul>\n  <div *ngFor=\"let category of categories\">\n    <li>{{ category.name }}</li>\n  </div>\n</ul>\n\n"
 
 /***/ }),
 
@@ -64,7 +64,7 @@ __webpack_require__.r(__webpack_exports__);
 var AppComponent = /** @class */ (function () {
     function AppComponent(_categoryService) {
         this._categoryService = _categoryService;
-        this.title = 'Angular';
+        this.title = 'Grocery Price Book';
     }
     AppComponent.prototype.ngOnInit = function () {
         this.getCategories();
