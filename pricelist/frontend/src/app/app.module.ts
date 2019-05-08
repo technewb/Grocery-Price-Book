@@ -2,20 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CategoryService } from './category.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriesComponent } from './categories/categories.component';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [CategoryService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
