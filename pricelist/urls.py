@@ -1,44 +1,16 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 from pricelist.views import CategoryViewSet, api_root, FoodViewSet
 from . import views
+from rest_framework.routers import DefaultRouter
 
-category_list = CategoryViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-})
+# Router automatically makes routes for api
+router = DefaultRouter()
 
-category_detail = CategoryViewSet.as_view({
-    'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
-})
+# Registered Category route
+router.register(r'categories', views.CategoryViewSet)
 
-food_list = FoodViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-})
-
-food_detail = FoodViewSet.as_view({
-    'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
-    'delete': 'destroy'
-})
-
+# Index of api at api, and includes registered routers
 urlpatterns = [
-    path('', views.index, name='index'),
-    # API root
-    path('api', api_root),
-    # List of categories
-    path('api/categories/', category_list, name='category-list'),
-    # Category detail
-    path('api/categories/<int:pk>', category_detail, name='category-detail'),
-    # List of food
-    path('api/food/', food_list, name='food-list'),
-    # Food detail
-    path('api/food/<int:pk>', food_detail, name='food-detail'),
+    path('api/', include(router.urls))
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
