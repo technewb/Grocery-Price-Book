@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
+// Grab and return Category API data from Django server
 export class CategoryService {
 
   API_URL ='http://localhost:8000/api';
