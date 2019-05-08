@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    {{ title }}!\n  </h1>\n</div>\n<h2>Categories: </h2>\n<ul>\n  <div *ngFor=\"let category of categories\">\n    <li>{{ category.name }}</li>\n  </div>\n</ul>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div style=\"text-align:center\">\r\n  <h1>\r\n    {{ title }}\r\n  </h1>\r\n</div>\r\n<h2>Categories: </h2>\r\n<app-categories></app-categories>\r\n\r\n"
 
 /***/ }),
 
@@ -57,37 +57,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category.service */ "./src/app/category.service.ts");
-
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_categoryService) {
-        this._categoryService = _categoryService;
+    function AppComponent() {
         this.title = 'Grocery Price Book';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.getCategories();
-    };
-    AppComponent.prototype.getCategories = function () {
-        var _this = this;
-        this._categoryService.list().subscribe(
-        // On success
-        function (data) {
-            _this.categories = data;
-        }, 
-        // On error
-        function (err) { return console.error(err); }, 
-        // Runs on completion
-        function () { return console.log('done loading categories'); });
-    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_category_service__WEBPACK_IMPORTED_MODULE_2__["CategoryService"]])
+        })
     ], AppComponent);
     return AppComponent;
 }());
@@ -112,6 +93,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./category.service */ "./src/app/category.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _categories_categories_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./categories/categories.component */ "./src/app/categories/categories.component.ts");
+
 
 
 
@@ -124,7 +107,8 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                _categories_categories_component__WEBPACK_IMPORTED_MODULE_6__["CategoriesComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -135,6 +119,78 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/categories/categories.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/categories/categories.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3JpZXMvY2F0ZWdvcmllcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/categories/categories.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/categories/categories.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\r\n  categories works!\r\n</p>\r\n\r\n<div *ngFor=\"let category of categories\">\r\n    <li>{{ category.name }}</li>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/categories/categories.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/categories/categories.component.ts ***!
+  \****************************************************/
+/*! exports provided: CategoriesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriesComponent", function() { return CategoriesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../category.service */ "./src/app/category.service.ts");
+
+
+
+var CategoriesComponent = /** @class */ (function () {
+    function CategoriesComponent(_categoryService) {
+        this._categoryService = _categoryService;
+    }
+    CategoriesComponent.prototype.ngOnInit = function () {
+        this.getCategories();
+    };
+    CategoriesComponent.prototype.getCategories = function () {
+        var _this = this;
+        this._categoryService.list().subscribe(
+        // On success
+        function (data) {
+            _this.categories = data;
+        }, 
+        // On error
+        function (err) { return console.error(err); }, 
+        // Runs on completion
+        function () { return console.log('done loading categories'); });
+    };
+    CategoriesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-categories',
+            template: __webpack_require__(/*! ./categories.component.html */ "./src/app/categories/categories.component.html"),
+            styles: [__webpack_require__(/*! ./categories.component.css */ "./src/app/categories/categories.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_category_service__WEBPACK_IMPORTED_MODULE_2__["CategoryService"]])
+    ], CategoriesComponent);
+    return CategoriesComponent;
 }());
 
 
@@ -163,7 +219,7 @@ var CategoryService = /** @class */ (function () {
     }
     // Uses http.get() to load data from API endpoint
     CategoryService.prototype.list = function () {
-        return this.http.get('../api/categories');
+        return this.http.get('../api/categories/');
     };
     CategoryService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
