@@ -11,7 +11,7 @@ export class CategoryListComponent implements OnInit {
 
   displayedColumns: string [] = ['id', 'name'];
   // Hold data grabbed from Category API
-  private dataSource: Category[];
+  private categories: Category[];
 
   show(val) {
     return typeof val === 'number';
@@ -31,9 +31,8 @@ export class CategoryListComponent implements OnInit {
    * Grabs data from api and puts it into dataSource
    */
   getCategories() {
-    this.categoryService.getCategories().subscribe((data: Category[]) => {
-      this.dataSource = data;
-    })
+    this.categoryService.getCategories()
+      .subscribe(categories => this.categories = categories);
   }
 
   selectedCategory: Category;
@@ -41,5 +40,15 @@ export class CategoryListComponent implements OnInit {
     console.log(category);
     this.selectedCategory = category;
   }
+
+  add(name: string): void {
+    name = name.trim();
+      if (!name) { return; }
+      this.categoryService.addCategory({ name } as Category)
+        .subscribe(category => {
+          console.log(category);
+          this.categories.push(category);
+        });
+    }
 
 }

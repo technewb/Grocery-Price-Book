@@ -43,6 +43,15 @@ export class CategoryService {
     );
   }
 
+  /** POST: add a new category to the server */
+  addCategory (category: Category): Observable<Category> {
+    console.log(category);
+    return this.httpClient.post<Category>(`${this.API_URL}/`, category, httpOptions).pipe(
+      tap((newCategory: Category) => console.log(`added category w/ id=${newCategory.id}`)),
+      catchError(this.handleError<Category>('addCategory'))
+    );
+  }
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.

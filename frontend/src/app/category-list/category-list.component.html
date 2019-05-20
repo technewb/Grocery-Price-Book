@@ -1,10 +1,20 @@
 <p>
   category-list works!
 </p>
-<div *ngIf="dataSource">
-<ul *ngFor="let category of dataSource" (click)='onSelect(category)'>
+<div *ngIf="categories">
+<ul *ngFor="let category of categories" (click)='onSelect(category)'>
   <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">{{ category.id }}</li>
 </ul>
 </div>
+
+<div>
+    <label>Category name:
+      <input #categoryName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(categoryName.value); categoryName.value=''">
+      add
+    </button>
+  </div>
 
 <app-category-detail [category]="selectedCategory"></app-category-detail>
