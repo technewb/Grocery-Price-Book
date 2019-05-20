@@ -52,6 +52,17 @@ export class CategoryService {
     );
   }
 
+  /** DELETE: delete the category from the server */
+  deleteCategory (category: Category | number): Observable<Category> {
+    const id = typeof category === 'number' ? category : category.id;
+    const url = `${this.API_URL}/${id}/`;
+
+    return this.httpClient.delete<Category>(url, httpOptions).pipe(
+      tap(_ => console.log(`deleted category id=${id}`)),
+      catchError(this.handleError<Category>('deleteHero'))
+    );
+  }
+
   /**
  * Handle Http operation that failed.
  * Let the app continue.

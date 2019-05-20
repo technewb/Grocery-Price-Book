@@ -3,7 +3,10 @@
 </p>
 <div *ngIf="categories">
 <ul *ngFor="let category of categories" (click)='onSelect(category)'>
-  <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">{{ category.id }}</li>
+  <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">
+    {{ category.id }}
+    <button class="delete" title="delete category" (click)="delete(category)">x</button>
+  </li>
 </ul>
 </div>
 
