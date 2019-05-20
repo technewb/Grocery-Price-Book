@@ -1,6 +1,10 @@
 <p>
   category-list works!
 </p>
-<ul *ngFor="let category of dataSource">
-  <li>{{ category.name }}</li>
+<div *ngIf="dataSource">
+<ul *ngFor="let category of dataSource" (click)='onSelect(category)'>
+  <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">{{ category.id }}</li>
 </ul>
+</div>
+
+<app-category-detail [category]="selectedCategory"></app-category-detail>
