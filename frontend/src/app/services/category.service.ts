@@ -59,7 +59,20 @@ export class CategoryService {
 
     return this.httpClient.delete<Category>(url, httpOptions).pipe(
       tap(_ => console.log(`deleted category id=${id}`)),
-      catchError(this.handleError<Category>('deleteHero'))
+      catchError(this.handleError<Category>('deleteCategory'))
+    );
+  }
+
+  /** GET categories whose name contains search term */
+  searchCategories(term: string): Observable<Category[]> {
+    if (!term.trim()) {
+      // If no search term, return empty category array
+      return of([]);
+    }
+
+    return this.httpClient.get<Category[]>(`${this.API_URL}/?name=${term}`).pipe(
+      tap(_ => console.log(`found categories matching "${term}`)),
+      catchError(this.handleError<Category[]>('searchCategories', []))
     );
   }
 

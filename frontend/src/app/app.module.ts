@@ -7,12 +7,14 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
+import { CategorySearchComponent } from './category-search/category-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryListComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    CategorySearchComponent
   ],
   imports: [
     BrowserModule,

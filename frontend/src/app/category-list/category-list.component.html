@@ -1,6 +1,9 @@
 <p>
   category-list works!
 </p>
+
+<app-category-search></app-category-search>
+
 <div *ngIf="categories">
 <ul *ngFor="let category of categories" (click)='onSelect(category)'>
   <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">
