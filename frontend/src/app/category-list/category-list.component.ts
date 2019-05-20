@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from "../services/category.service";
+import { Category } from "../category";
 
 @Component({
   selector: 'app-category-list',
@@ -10,7 +11,11 @@ export class CategoryListComponent implements OnInit {
 
   displayedColumns: string [] = ['id', 'name'];
   // Hold data grabbed from Category API
-  dataSource = [];
+  private dataSource: Category[];
+
+  show(val) {
+    return typeof val === 'number';
+  }
 
   /** 
   * Dependency injection for Category Service 
@@ -26,9 +31,15 @@ export class CategoryListComponent implements OnInit {
    * Grabs data from api and puts it into dataSource
    */
   getCategories() {
-    this.categoryService.getFirstPage().subscribe((data: Array<object>) => {
+    this.categoryService.getCategories().subscribe((data: Category[]) => {
       this.dataSource = data;
     })
+  }
+
+  selectedCategory: Category;
+  onSelect(category: Category): void {
+    console.log(category);
+    this.selectedCategory = category;
   }
 
 }
