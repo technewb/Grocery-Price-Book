@@ -1,13 +1,9 @@
-<p>
-  category-list works!
-</p>
-
-<app-category-search></app-category-search>
-
 <div *ngIf="categories">
-<ul *ngFor="let category of categories" (click)='onSelect(category)'>
-  <li [class.selected]="category === selectedCategory" *ngIf="show(category.id)" (click)="onSelect(category.id)">
-    {{ category.id }}
+<ul>
+  <li *ngFor="let category of categories">
+    <a routerLink="/categories/{{category.id}}">
+      {{ category.id }} - {{category.name}}
+    </a>
     <button class="delete" title="delete category" (click)="delete(category)">x</button>
   </li>
 </ul>
@@ -22,5 +18,3 @@
       add
     </button>
   </div>
-
-<app-category-detail [category]="selectedCategory"></app-category-detail>
