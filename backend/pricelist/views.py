@@ -23,6 +23,7 @@ def api_root(request, format=None):
         'food': reverse('food-list', request=request, format=format),
     })
 
+# FilterSet class for Category model
 class CategoryFilter(filters.FilterSet):
     name = filters.CharFilter(lookup_expr='contains')
 
@@ -30,7 +31,7 @@ class CategoryFilter(filters.FilterSet):
         model = Category
         fields = ['name']
 
-# Defines view behavior
+# Defines view behavior for Category model
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     Provides basic CRUD for Category model
@@ -40,6 +41,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = CategoryFilter
 
+# Defines view behavior for Food model
 class FoodViewSet(viewsets.ModelViewSet):
     """
     Provides basic CRUD for Food model
