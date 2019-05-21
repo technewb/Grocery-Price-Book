@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n    {{ title }}!\n  </h1>\n</div>\n<h2>Categories: </h2>\n<ul>\n  <div *ngFor=\"let category of categories\">\n    <li>{{ category.name }}</li>\n  </div>\n</ul>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div style=\"text-align:center\">\r\n  <h1>\r\n    {{ title }}\r\n  </h1>\r\n</div>\r\n<h2>Categories: </h2>\r\n\r\n<a [routerLink]=\"'/categories'\">Categories</a>\r\n\r\n<div>\r\n  <router-outlet></router-outlet>\r\n</div>>\r\n\r\n"
 
 /***/ }),
 
@@ -57,37 +57,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./category.service */ "./src/app/category.service.ts");
 
 
-
+// import { CategoryService } from './category.service';
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_categoryService) {
-        this._categoryService = _categoryService;
+    function AppComponent() {
         this.title = 'Grocery Price Book';
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.getCategories();
-    };
-    AppComponent.prototype.getCategories = function () {
-        var _this = this;
-        this._categoryService.list().subscribe(
-        // On success
-        function (data) {
-            _this.categories = data;
-        }, 
-        // On error
-        function (err) { return console.error(err); }, 
-        // Runs on completion
-        function () { return console.log('done loading categories'); });
-    };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_category_service__WEBPACK_IMPORTED_MODULE_2__["CategoryService"]])
+        })
     ], AppComponent);
     return AppComponent;
 }());
@@ -110,8 +92,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _category_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./category.service */ "./src/app/category.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _category_list_category_list_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./category-list/category-list.component */ "./src/app/category-list/category-list.component.ts");
 
 
 
@@ -124,13 +106,14 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                _category_list_category_list_component__WEBPACK_IMPORTED_MODULE_5__["CategoryListComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
             ],
-            providers: [_category_service__WEBPACK_IMPORTED_MODULE_4__["CategoryService"]],
+            providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
@@ -141,10 +124,79 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/category.service.ts":
-/*!*************************************!*\
-  !*** ./src/app/category.service.ts ***!
-  \*************************************/
+/***/ "./src/app/category-list/category-list.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/category-list/category-list.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NhdGVnb3J5LWxpc3QvY2F0ZWdvcnktbGlzdC5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/category-list/category-list.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/category-list/category-list.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  category-list works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/category-list/category-list.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/category-list/category-list.component.ts ***!
+  \**********************************************************/
+/*! exports provided: CategoryListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoryListComponent", function() { return CategoryListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_category_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/category.service */ "./src/app/services/category.service.ts");
+
+
+
+var CategoryListComponent = /** @class */ (function () {
+    function CategoryListComponent(categoryService) {
+        this.categoryService = categoryService;
+        this.displayedColumns = ['id', 'name'];
+        this.dataSource = [];
+    }
+    CategoryListComponent.prototype.ngOnInit = function () {
+        this.getCategories;
+    };
+    CategoryListComponent.prototype.getCategories = function () {
+        var _this = this;
+        this.categoryService.getFirstPage().subscribe(function (data) {
+            _this.dataSource = data;
+            console.log(data);
+        });
+    };
+    CategoryListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-category-list',
+            template: __webpack_require__(/*! ./category-list.component.html */ "./src/app/category-list/category-list.component.html"),
+            styles: [__webpack_require__(/*! ./category-list.component.css */ "./src/app/category-list/category-list.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_category_service__WEBPACK_IMPORTED_MODULE_2__["CategoryService"]])
+    ], CategoryListComponent);
+    return CategoryListComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/category.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/category.service.ts ***!
+  \**********************************************/
 /*! exports provided: CategoryService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -158,15 +210,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CategoryService = /** @class */ (function () {
-    function CategoryService(http) {
-        this.http = http;
+    function CategoryService(httpClient) {
+        this.httpClient = httpClient;
+        this.API_URL = 'http://localhost:8000/api';
     }
-    // Uses http.get() to load data from API endpoint
-    CategoryService.prototype.list = function () {
-        return this.http.get('../api/categories');
+    CategoryService.prototype.getFirstPage = function () {
+        return this.httpClient.get(this.API_URL + "/api/categories");
     };
     CategoryService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], CategoryService);
     return CategoryService;

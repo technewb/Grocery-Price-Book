@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 from django.shortcuts import render
+from django_filters import rest_framework as filters
 
 def index(request, path=''):
     """
@@ -22,14 +23,25 @@ def api_root(request, format=None):
         'food': reverse('food-list', request=request, format=format),
     })
 
-# Defines view behavior
+# FilterSet class for Category model
+class CategoryFilter(filters.FilterSet):
+    name = filters.CharFilter(lookup_expr='contains')
+
+    class Meta:
+        model = Category
+        fields = ['name']
+
+# Defines view behavior for Category model
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     Provides basic CRUD for Category model
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = CategoryFilter
 
+# Defines view behavior for Food model
 class FoodViewSet(viewsets.ModelViewSet):
     """
     Provides basic CRUD for Food model

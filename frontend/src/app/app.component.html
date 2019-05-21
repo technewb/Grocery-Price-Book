@@ -5,9 +5,10 @@
   </h1>
 </div>
 <h2>Categories: </h2>
-<ul>
-  <div *ngFor="let category of categories">
-    <li>{{ category.name }}</li>
-  </div>
-</ul>
+
+<a [routerLink]="'/categories'">Categories</a>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
 
