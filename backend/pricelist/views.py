@@ -1,10 +1,11 @@
 from pricelist.models import Category, Food
 from api.serializers import CategorySerializer, FoodSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 from django.shortcuts import render
+from django_filters import rest_framework as test
 
 def index(request, path=''):
     """
@@ -29,6 +30,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', 'name')
 
 class FoodViewSet(viewsets.ModelViewSet):
     """
