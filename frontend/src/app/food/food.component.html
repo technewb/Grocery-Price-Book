@@ -1,3 +1,7 @@
-<p>
-  food works!
-</p>
+<div *ngIf="food">
+  <ul>
+    <li *ngFor="let f of food">
+      {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
+    </li>
+  </ul>
+</div>
