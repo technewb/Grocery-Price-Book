@@ -36,21 +36,22 @@ export class CategoryListComponent implements OnInit {
   }
 
   selectedCategory: Category;
+  /** on selection update selectedCategory with chosen category data */
   onSelect(category: Category): void {
-    console.log(category);
     this.selectedCategory = category;
   }
 
+  /** Submits category to be added to server and updates list on page */
   add(name: string): void {
     name = name.trim();
       if (!name) { return; }
       this.categoryService.addCategory({ name } as Category)
         .subscribe(category => {
-          console.log(category);
           this.categories.push(category);
         });
     }
 
+    /** Deleted category from server and filters it out from list on page */
     delete(category: Category): void {
       this.categories = this.categories.filter(c => c !== category);
       this.categoryService.deleteCategory(category).subscribe();

@@ -1,5 +1,5 @@
 /**
- * Category interface
+ * Category class
  */
 
 export class Category {

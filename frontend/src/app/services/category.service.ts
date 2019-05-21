@@ -19,6 +19,7 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
+  /** GET: Return all items in Category */
   getCategories(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(this.API_URL)
     .pipe(
@@ -27,6 +28,7 @@ export class CategoryService {
     );
   }
 
+  /** GET: Return a specific category via @param id */
   getCategory(id: number): Observable<Category> {
     const url = `${this.API_URL}/${id}/`;
     return this.httpClient.get<Category>(url).pipe(

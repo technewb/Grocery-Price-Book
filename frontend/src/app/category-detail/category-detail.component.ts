@@ -21,6 +21,7 @@ export class CategoryDetailComponent implements OnInit {
   ngOnInit() {
   }
   
+  /** updates category item information */
   save(): void {
     this.categoryService.updateCategory(this.category, this.category.id)
       .subscribe();
