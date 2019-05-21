@@ -35,12 +35,6 @@ export class CategoryListComponent implements OnInit {
       .subscribe(categories => this.categories = categories);
   }
 
-  selectedCategory: Category;
-  /** on selection update selectedCategory with chosen category data */
-  onSelect(category: Category): void {
-    this.selectedCategory = category;
-  }
-
   /** Submits category to be added to server and updates list on page */
   add(name: string): void {
     name = name.trim();
