@@ -28,7 +28,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   /**
-   * Grabs data from api and puts it into dataSource
+   * Grabs data from api and puts it into categories
    */
   getCategories() {
     this.categoryService.getCategories()
