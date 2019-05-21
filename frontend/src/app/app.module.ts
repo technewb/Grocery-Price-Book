@@ -8,13 +8,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
+import { FoodComponent } from './food/food.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryListComponent,
     CategoryDetailComponent,
-    CategorySearchComponent
+    CategorySearchComponent,
+    FoodComponent
   ],
   imports: [
     BrowserModule,
