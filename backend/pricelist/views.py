@@ -1,11 +1,11 @@
 from pricelist.models import Category, Food
 from api.serializers import CategorySerializer, FoodSerializer
-from rest_framework import viewsets, filters
+from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 from django.shortcuts import render
-from django_filters import rest_framework as test
+from django_filters import rest_framework as filters
 
 def index(request, path=''):
     """
@@ -23,6 +23,13 @@ def api_root(request, format=None):
         'food': reverse('food-list', request=request, format=format),
     })
 
+class CategoryFilter(filters.FilterSet):
+    name = filters.CharFilter(lookup_expr='contains')
+
+    class Meta:
+        model = Category
+        fields = ['name']
+
 # Defines view behavior
 class CategoryViewSet(viewsets.ModelViewSet):
     """
@@ -30,8 +37,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('id', 'name')
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = CategoryFilter
 
 class FoodViewSet(viewsets.ModelViewSet):
     """

@@ -70,7 +70,7 @@ export class CategoryService {
       return of([]);
     }
 
-    return this.httpClient.get<Category[]>(`${this.API_URL}/?search=${term}`).pipe(
+    return this.httpClient.get<Category[]>(`${this.API_URL}/?name=${term}`).pipe(
       tap(_ => console.log(`found categories matching "${term}`)),
       catchError(this.handleError<Category[]>('searchCategories', []))
     );
