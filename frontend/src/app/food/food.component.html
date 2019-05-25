@@ -4,4 +4,11 @@
       {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
     </li>
   </ul>
+
+  <ul *ngFor="let category of categories">
+      {{category.name}}
+        <div *ngFor="let f of food">
+            <li *ngIf="f.category.id === category.id">{{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a></li>
+        </div>
+  </ul>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FoodService } from "../services/food.service";
-import { Food } from "../food";
+import { GenericService } from "../generic.service";
+import { Food, Category } from "../models";
 
 @Component({
   selector: 'app-food',
@@ -9,21 +9,34 @@ import { Food } from "../food";
 })
 export class FoodComponent implements OnInit {
 
-  // Hold food data grabbed from Food API
+  // Hold data grabbed from Food API to objects
   private food: Food[];
+  private categories: Category[];
 
-  /** Dependency injects for Food Service */
-  constructor(private foodService: FoodService) { }
+  // Endpoints
+  protected foodEndpoint = 'food';
+  protected catEndPoint = 'categories';
+
+
+  /** Dependency injects for Generic Service */
+  constructor(private genericService: GenericService) { }
 
   ngOnInit() {
-    // Run get all food on component load
+    // Run get all food & categories
     this.getAllFood();
+    this.getAllCategories();
   }
 
   /** Grabs data from api and puts it into food */
   getAllFood() {
-    this.foodService.getAllFood()
-      .subscribe(food => this.food = food)
+    this.genericService.getAll<Food>(this.foodEndpoint)
+      .subscribe(food => this.food = food);
+  }
+
+  /** Grabs data from api and puts it into categories */
+  getAllCategories() {
+    this.genericService.getAll<Category>(this.catEndPoint)
+      .subscribe(categories => this.categories = categories);
   }
 
 }

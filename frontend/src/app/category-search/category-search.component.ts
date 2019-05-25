@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from "rxjs";
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Category } from "../category";
-import { CategoryService } from "../services/category.service";
+import { Category } from "../models";
+import { GenericService } from "../generic.service";
 
 @Component({
   selector: 'app-category-search',
@@ -13,10 +13,16 @@ import { CategoryService } from "../services/category.service";
 })
 export class CategorySearchComponent implements OnInit {
 
+  // $ indicates variable is Observable
   categories$: Observable<Category[]>;
+
+  // Hold all the search terms
   private searchTerms = new Subject<string>();
 
-  constructor(private categoryService: CategoryService) { }
+  // Endpoints
+  protected catEndpoint = 'categories';
+
+  constructor(private genericService: GenericService) { }
 
   // Push search term into obserable stream
   search(term: string): void {
@@ -32,7 +38,7 @@ export class CategorySearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time term changes
-      switchMap((term: string) => this.categoryService.searchCategories(term)),
+      switchMap((term: string) => this.genericService.search(term, this.catEndpoint)),
     );
   }
 
