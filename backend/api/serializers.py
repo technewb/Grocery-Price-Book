@@ -20,7 +20,8 @@ class FoodSerializer(serializers.ModelSerializer):
     category = CategorySerializer(
         read_only=True
     )
+    category_id = serializers.IntegerField()
 
     class Meta:
         model = Food
-        fields = ('url', 'id', 'name', 'category')
+        fields = ('url', 'id', 'name', 'category_id', 'category')

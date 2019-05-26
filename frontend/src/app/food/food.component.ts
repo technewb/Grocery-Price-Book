@@ -39,6 +39,15 @@ export class FoodComponent implements OnInit {
       .subscribe(categories => this.categories = categories);
   }
 
+  add(name: string, category_id: number): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.genericService.add({ name , category_id } as Food, this.foodEndpoint)
+      .subscribe(f => {
+        this.food.push(f)
+      });
+  }
+
   delete(food: Food): void {
     this.food = this.food.filter(f => f !== food);
     this.genericService.delete(food, this.foodEndpoint).subscribe();

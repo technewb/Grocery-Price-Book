@@ -9,11 +9,11 @@ interface IModel {
 /**
  * Food Model interface extended by IModel
  * @param name as string
- * @param category as Category class
+ * @param category as number
  */
 export interface IFood extends IModel {
     name: string
-    category?: Category
+    category_id?: number
 }
 
 /**
@@ -28,12 +28,12 @@ export interface ICategory extends IModel {
  * Food class implmenting interface for Food Model
  * @param id as number
  * @param name as string
- * @param category as Category
+ * @param category as number
  */
 export class Food implements IFood {
     id: number
     name: string
-    category: Category
+    category_id: number
 
     constructor(props: IFood) {
         Object.keys(props).forEach(prop => {

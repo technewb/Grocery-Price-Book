@@ -8,10 +8,22 @@
   <ul *ngFor="let category of categories">
       {{category.name}}
         <div *ngFor="let f of food">
-            <li *ngIf="f.category.id === category.id">
-              {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
+            <li *ngIf="f.category_id === category.id">
+              {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category_id}}">{{f.category.name}}</a>
               <button class="delete" title="delete food" (click)="delete(f)">x</button>
             </li>
         </div>
   </ul>
+</div>
+
+<div>
+  <label>Food name:
+    <input #foodName />
+  </label>
+  <label>Category:
+    <select #categorySelect>
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </label>
+    <button (click)="add(foodName.value, categorySelect.value); foodName.value=''">add</button>
 </div>
