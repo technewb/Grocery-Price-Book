@@ -1,0 +1,18 @@
+<button click="goBack()">go back</button>
+<div *ngIf="food">
+  <h2>{{food.name | uppercase}} Details</h2>
+  <div>
+    <span>id: </span>{{food.id}}
+  </div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="food.name" placeholder="name" />
+    </label>
+    <label>Category:
+        <select [(ngModel)]="food.category_id">
+          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+      </label>
+    <button (click)="save()">save</button>
+  </div>
+</div>

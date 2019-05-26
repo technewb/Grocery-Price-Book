@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
 import { CategorySearchComponent } from './category-search/category-search.component';
 import { FoodComponent } from './food/food.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FoodComponent } from './food/food.component';
     CategoryListComponent,
     CategoryDetailComponent,
     CategorySearchComponent,
-    FoodComponent
+    FoodComponent,
+    FoodDetailComponent
   ],
   imports: [
     BrowserModule,

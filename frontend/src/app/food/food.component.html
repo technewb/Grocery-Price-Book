@@ -9,7 +9,7 @@
       {{category.name}}
         <div *ngFor="let f of food">
             <li *ngIf="f.category_id === category.id">
-              {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category_id}}">{{f.category.name}}</a>
+              <a routerLink="/food/{{f.id}}">{{f.name}}</a>
               <button class="delete" title="delete food" (click)="delete(f)">x</button>
             </li>
         </div>
