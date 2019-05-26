@@ -1,14 +1,17 @@
 <div *ngIf="food">
-  <ul>
+  <!-- <ul>
     <li *ngFor="let f of food">
       {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
     </li>
-  </ul>
+  </ul> -->
 
   <ul *ngFor="let category of categories">
       {{category.name}}
         <div *ngFor="let f of food">
-            <li *ngIf="f.category.id === category.id">{{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a></li>
+            <li *ngIf="f.category.id === category.id">
+              {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
+              <button class="delete" title="delete food" (click)="delete(f)">x</button>
+            </li>
         </div>
   </ul>
 </div>
