@@ -3,6 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { CategoryListComponent } from "./category-list/category-list.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
+import { FoodComponent } from './food/food.component';
+import { FoodDetailComponent } from './food-detail/food-detail.component';
 
 /**
  * Routes to components
@@ -19,6 +21,14 @@ const routes: Routes = [
         path: 'categories/:id',
         component: CategoryDetailComponent
     },
+    {
+        path: 'food',
+        component: FoodComponent
+    },
+    {
+        path: 'food/:id',
+        component: FoodDetailComponent
+    }
 ];
 
 @NgModule({

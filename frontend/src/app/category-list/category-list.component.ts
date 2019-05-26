@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from "../services/category.service";
-import { Category } from "../category";
+import { GenericService } from "../generic.service";
+import { Category } from "../models";
 
 @Component({
   selector: 'app-category-list',
@@ -9,18 +9,16 @@ import { Category } from "../category";
 })
 export class CategoryListComponent implements OnInit {
 
-  displayedColumns: string [] = ['id', 'name'];
   // Hold data grabbed from Category API
   private categories: Category[];
 
-  show(val) {
-    return typeof val === 'number';
-  }
+  // Endpoints
+  protected catEndpoint = 'categories';
 
   /** 
   * Dependency injection for Category Service 
   */
-  constructor(private categoryService: CategoryService) { }
+  constructor(private genericService: GenericService) { }
 
   ngOnInit() {
     // Run get categories on component load
@@ -28,10 +26,10 @@ export class CategoryListComponent implements OnInit {
   }
 
   /**
-   * Grabs data from api and puts it into dataSource
+   * Grabs data from api and puts it into categories
    */
   getCategories() {
-    this.categoryService.getCategories()
+    this.genericService.getAll<Category>(this.catEndpoint)
       .subscribe(categories => this.categories = categories);
   }
 
@@ -39,16 +37,17 @@ export class CategoryListComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
       if (!name) { return; }
-      this.categoryService.addCategory({ name } as Category)
+      this.genericService.add({ name } as Category, this.catEndpoint)
         .subscribe(category => {
           this.categories.push(category);
         });
-    }
+  }
+
 
     /** Deleted category from server and filters it out from list on page */
     delete(category: Category): void {
       this.categories = this.categories.filter(c => c !== category);
-      this.categoryService.deleteCategory(category).subscribe();
+      this.genericService.delete(category, this.catEndpoint).subscribe();
     }
 
 }

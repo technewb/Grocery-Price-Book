@@ -1,11 +1,13 @@
-from pricelist.models import Category, Food
-from api.serializers import CategorySerializer, FoodSerializer
-from rest_framework import viewsets
-from rest_framework.decorators import api_view
-from rest_framework.reverse import reverse
-from rest_framework.response import Response
 from django.shortcuts import render
 from django_filters import rest_framework as filters
+from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+from api.serializers import CategorySerializer, FoodSerializer
+from pricelist.models import Category, Food
+
 
 def index(request, path=''):
     """

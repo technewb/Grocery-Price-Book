@@ -7,8 +7,9 @@ from rest_framework.routers import DefaultRouter
 # Router automatically makes routes for api
 router = DefaultRouter()
 
-# Registered Category route
+# Registered Model routes route
 router.register(r'categories', views.CategoryViewSet)
+router.register(r'food', views.FoodViewSet)
 
 # Index of api at api, and includes registered routers
 urlpatterns = [

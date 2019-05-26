@@ -1,0 +1,33 @@
+<div *ngIf="food">
+  <!-- <ul>
+    <li *ngFor="let f of food">
+      {{f.id}} - {{f.name}} - <a routerLink="/categories/{{f.category.id}}">{{f.category.name}}</a>
+    </li>
+  </ul> -->
+
+  <ul *ngFor="let category of categoriesUsing">
+      {{category.name}}
+        <div *ngFor="let f of food">
+            <li *ngIf="f.category_id === category.id">
+              <a routerLink="/food/{{f.id}}">{{f.name}}</a>
+              <button class="delete" title="delete food" (click)="delete(f)">x</button>
+            </li>
+        </div>
+  </ul>
+</div>
+
+<div>
+  <label>Food name:
+    <input #foodName />
+  </label>
+  <label>Category:
+    <select #categorySelect>
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+    </select>
+  </label>
+    <button (click)="add(foodName.value, categorySelect.value); foodName.value=''">add</button>
+</div>
+
+<div *ngFor="let cat of filtered">
+  {{cat.name}}
+</div>
