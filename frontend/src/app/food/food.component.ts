@@ -29,7 +29,7 @@ export class FoodComponent implements OnInit {
     this.getData();
   }
 
-  /** Grabs data from api and puts it into food */
+  /** Grabs data from api */
   getData() {
 
     // Hold array of category ids that have food connected to it
