@@ -37,7 +37,7 @@ export class FoodComponent implements OnInit {
 
     // Get food data via service
     this.genericService.getAll<Food>(this.foodEndpoint)
-      .forEach(foodData => {
+      .subscribe(foodData => {
         // Assign food all food data
         this.food = foodData;
 
