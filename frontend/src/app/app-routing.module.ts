@@ -10,25 +10,21 @@ import { FoodDetailComponent } from './food/food-detail/food-detail.component';
  * Routes to components
  */
 const routes: Routes = [
-    // Redirects on load to categories
-    { path: '', redirectTo: 'categories', pathMatch: 'full' },
+    // Redirects on load
+    { 
+        path: '', 
+        redirectTo: '', 
+        pathMatch: 'full' 
+    },
     // Other links and paths
     {
         path: 'categories',
-        component: CategoryListComponent
-    },
-    {
-        path: 'categories/:id',
-        component: CategoryDetailComponent
+        loadChildren: () => import('./categories/categories.module').then(mod => mod.CategoriesModule)
     },
     {
         path: 'food',
-        component: FoodListComponent
+        loadChildren: () => import('./food/food.module').then(mod => mod.FoodModule)
     },
-    {
-        path: 'food/:id',
-        component: FoodDetailComponent
-    }
 ];
 
 @NgModule({
