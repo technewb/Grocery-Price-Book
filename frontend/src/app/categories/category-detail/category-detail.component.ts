@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 
-import { Category } from "../models";
-import { GenericService } from "../generic.service";
+import { Category } from "../../models"
+import { GenericService } from "../../generic.service";
 
 @Component({
   selector: 'app-category-detail',

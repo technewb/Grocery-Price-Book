@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from "rxjs";
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Category } from "../models";
-import { GenericService } from "../generic.service";
+import { Category } from "../../models";
+import { GenericService } from "../../generic.service";
 
 @Component({
   selector: 'app-category-search',
