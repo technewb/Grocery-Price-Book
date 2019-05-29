@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from "../../generic.service";
-import { Food } from "../../models";
+import { Food } from "../food";
 import { Category } from "../../categories/category";
 
 @Component({
