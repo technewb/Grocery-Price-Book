@@ -3,8 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { CategoryListComponent } from "./categories/category-list/category-list.component";
 import { CategoryDetailComponent } from "./categories/category-detail/category-detail.component";
-import { FoodComponent } from './food/food.component';
-import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { FoodListComponent } from './food/food-list/food-list.component';
+import { FoodDetailComponent } from './food/food-detail/food-detail.component';
 
 /**
  * Routes to components
@@ -23,7 +23,7 @@ const routes: Routes = [
     },
     {
         path: 'food',
-        component: FoodComponent
+        component: FoodListComponent
     },
     {
         path: 'food/:id',

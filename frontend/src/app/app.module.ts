@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
 import { CategoryDetailComponent } from './categories/category-detail/category-detail.component';
 import { CategorySearchComponent } from './categories/category-search/category-search.component';
-import { FoodComponent } from './food/food.component';
-import { FoodDetailComponent } from './food-detail/food-detail.component';
+import { FoodListComponent } from "./food/food-list/food-list.component";
+import { FoodDetailComponent } from './food/food-detail/food-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { FoodDetailComponent } from './food-detail/food-detail.component';
     CategoryListComponent,
     CategoryDetailComponent,
     CategorySearchComponent,
-    FoodComponent,
+    FoodListComponent,
     FoodDetailComponent
   ],
   imports: [

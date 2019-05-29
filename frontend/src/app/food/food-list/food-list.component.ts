@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericService } from "../generic.service";
-import { Food, Category } from "../models";
+import { GenericService } from "../../generic.service";
+import { Food, Category } from "../../models";
 
 @Component({
-  selector: 'app-food',
-  templateUrl: './food.component.html',
-  styleUrls: ['./food.component.css']
+  selector: 'app-food-list',
+  templateUrl: './food-list.component.html',
+  styleUrls: ['./food-list.component.css']
 })
-export class FoodComponent implements OnInit {
-
+export class FoodListComponent implements OnInit {
+  
   // Hold data grabbed from Food & Category API to objects
   private food: Food[];
   private categories: Category[];
