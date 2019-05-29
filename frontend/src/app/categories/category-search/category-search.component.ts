@@ -30,7 +30,7 @@ export class CategorySearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories$ = this.searchTerms.pipe(
+    this.categories$ = <Observable<Category[]>>this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering next term
       debounceTime(300),
 
