@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from "../../generic.service";
-import { Food, Category } from "../../models";
+import { Food } from "../../models";
+import { Category } from "../../categories/category";
 
 @Component({
   selector: 'app-food-list',

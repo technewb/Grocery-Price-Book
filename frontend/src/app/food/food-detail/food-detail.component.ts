@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Food, Category } from '../../models';
+import { Food } from '../../models';
+import { Category } from "../../categories/category";
 import { ActivatedRoute } from '@angular/router';
 import { GenericService } from '../../generic.service';
 import { Location } from '@angular/common';

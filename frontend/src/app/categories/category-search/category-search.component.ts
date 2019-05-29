@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from "rxjs";
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
-import { Category } from "../../models";
+import { Category } from "../category";
 import { GenericService } from "../../generic.service";
 
 @Component({
