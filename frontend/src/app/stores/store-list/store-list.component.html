@@ -1,0 +1,8 @@
+<div *ngIf="stores">
+  <ul>
+    <li id="store-list" *ngFor="let store of stores">
+      <a routerLink="/stores/{{store.id}}">{{store.name}} ({{store.location}})</a>
+      <!-- <button class="delete" title="delete category" (click)="delete(category)">x</button> -->
+    </li>
+  </ul>
+  </div>

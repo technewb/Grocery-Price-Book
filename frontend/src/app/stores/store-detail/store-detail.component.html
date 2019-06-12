@@ -1,0 +1,14 @@
+<button (click)="goBack()">go back</button>
+<div *ngIf="store">
+  <h2>{{store.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{store.id}}</div>
+  <div>
+    <label>name:
+        <input [(ngModel)]="store.name" [value]="store.name" placeholder="name" />
+    </label>
+    <label>location:
+      <input (ngModel)="store.location" [value]="store.location" placeholder="location" />
+  </label>
+    <button (click)="save()">save</button> 
+  </div>
+</div>
