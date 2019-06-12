@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pricelist.models import Category, Food
+from pricelist.models import Category, Food, Store
 
 # Serializers define the API representation
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
@@ -25,3 +25,12 @@ class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
         fields = ('url', 'id', 'name', 'category_id', 'category')
+
+class StoreSerializer(serializers.ModelSerializer):
+    """
+    Serializer class for Store model from ``pricelist.models``
+    """
+
+    class Meta:
+        model = Store
+        fields = ('url', 'id', 'name', 'location')
