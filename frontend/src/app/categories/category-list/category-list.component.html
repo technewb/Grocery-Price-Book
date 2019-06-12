@@ -1,6 +1,6 @@
 <div *ngIf="categories">
 <ul>
-  <li *ngFor="let category of categories">
+  <li id="category-list" *ngFor="let category of categories">
     <a routerLink="/categories/{{category.id}}">
       {{ category.id }} - {{category.name}}
     </a>
@@ -17,4 +17,4 @@
     <button (click)="add(categoryName.value); categoryName.value=''">
       add
     </button>
-  </div>
+</div>

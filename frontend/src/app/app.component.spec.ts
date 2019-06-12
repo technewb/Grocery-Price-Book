@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from "@angular/router/testing";
+import { Category } from './categories/category';
+import { Food } from './food/food';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -32,4 +34,23 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Grocery Price Book');
   });
+
 });
+
+describe('Model Classes', () => {
+  let categoryObj: Category;
+  let foodObj: Food;
+
+  it('should create new Category object', () => {
+    categoryObj = new Category({id: 1, name: 'Produce'});
+    expect(categoryObj.id).toBe(1);
+    expect(categoryObj.name).toBe('Produce');
+  })
+
+  it('should create new Food object', () => {
+    foodObj = new Food({id: 7, name: 'Frozen Pizza', category_id: 3});
+    expect(foodObj.id).toBe(7);
+    expect(foodObj.name).toBe('Frozen Pizza');
+    expect(foodObj.category_id).toBe(3);
+  })
+})

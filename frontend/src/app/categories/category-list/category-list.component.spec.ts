@@ -25,4 +25,9 @@ describe('CategoryListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
+
+describe(CategoryListComponent.name, () => {
+  
+})
