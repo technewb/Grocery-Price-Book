@@ -4,10 +4,10 @@
   <div><span>id: </span>{{store.id}}</div>
   <div>
     <label>name:
-        <input [(ngModel)]="store.name" [value]="store.name" placeholder="name" />
+        <input [(ngModel)]="store.name" placeholder="name" />
     </label>
     <label>location:
-      <input (ngModel)="store.location" [value]="store.location" placeholder="location" />
+      <input [(ngModel)]="store.location" placeholder="location" />
   </label>
     <button (click)="save()">save</button> 
   </div>
