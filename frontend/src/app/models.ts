@@ -23,3 +23,13 @@ export interface IFood extends IModel {
 export interface ICategory extends IModel {
     name: string
 }
+
+/**
+ * Category Model interface extended by IModel
+ * @param name as string
+ * @param location as string
+ */
+export interface IStore extends IModel {
+    name: string
+    location: string
+}

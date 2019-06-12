@@ -10,7 +10,7 @@ router = DefaultRouter()
 # Registered Model routes route
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'food', views.FoodViewSet)
-router.register(r'store', views.StoreViewSet)
+router.register(r'stores', views.StoreViewSet)
 
 # Index of api at api, and includes registered routers
 urlpatterns = [
