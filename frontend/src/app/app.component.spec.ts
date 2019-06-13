@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from "@angular/router/testing";
 import { Category } from './categories/category';
 import { Food } from './food/food';
+import { Store } from './stores/store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -40,17 +41,26 @@ describe('AppComponent', () => {
 describe('Model Classes', () => {
   let categoryObj: Category;
   let foodObj: Food;
+  let storeObj: Store;
 
   it('should create new Category object', () => {
     categoryObj = new Category({id: 1, name: 'Produce'});
     expect(categoryObj.id).toBe(1);
     expect(categoryObj.name).toBe('Produce');
-  })
+  });
 
   it('should create new Food object', () => {
     foodObj = new Food({id: 7, name: 'Frozen Pizza', category_id: 3});
     expect(foodObj.id).toBe(7);
     expect(foodObj.name).toBe('Frozen Pizza');
     expect(foodObj.category_id).toBe(3);
+  });
+
+  it('should create new Store object', () => {
+    storeObj = new Store({id: 3, name: 'Kroger', location: 'Houston, TX #3102'});
+    expect(storeObj.id).toBe(3);
+    expect(storeObj.name).toBe('Kroger');
+    expect(storeObj.location).toBe('Houston, TX #3102');
   })
+
 })
