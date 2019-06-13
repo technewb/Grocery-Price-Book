@@ -37,7 +37,7 @@ export class CategoryListComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
       if (!name) { return; }
-      this.genericService.add({ name } as Category, this.catEndpoint)
+      this.genericService.add<Category>({ name } as Category, this.catEndpoint)
         .subscribe(category => {
           this.categories.push(category);
         });
@@ -47,7 +47,7 @@ export class CategoryListComponent implements OnInit {
     /** Deleted category from server and filters it out from list on page */
     delete(category: Category): void {
       this.categories = this.categories.filter(c => c !== category);
-      this.genericService.delete(category, this.catEndpoint).subscribe();
+      this.genericService.delete<Category>(category, this.catEndpoint).subscribe();
     }
 
 }

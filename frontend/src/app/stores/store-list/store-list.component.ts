@@ -32,4 +32,22 @@ export class StoreListComponent implements OnInit {
       .subscribe(stores => this.stores = stores);
   }
 
+  /** Submits store to be added to server and updates list on page */
+  add(name: string, location: string): void {
+    name = name.trim();
+    location = location.trim();
+
+    if(!name && !location) { return; }
+    this.genericService.add<Store>({ name, location} as Store, this.storeEndpoint)
+      .subscribe(store => {
+        this.stores.push(store);
+      })
+  }
+
+  /** Deleted store from server and filters it out from list on page */
+  delete(store: Store): void {
+    this.stores = this.stores.filter(s => s !== store);
+    this.genericService.delete<Store>(store, this.storeEndpoint).subscribe();
+  }
+
 }
