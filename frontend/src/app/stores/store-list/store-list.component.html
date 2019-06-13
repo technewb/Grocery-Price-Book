@@ -1,0 +1,21 @@
+<div *ngIf="stores">
+  <ul>
+    <li id="store-list" *ngFor="let store of stores">
+      <a routerLink="/stores/{{store.id}}">{{store.name}} ({{store.location}})</a>
+      <button class="delete" title="delete store" (click)="delete(store)">x</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <label>Store name:
+    <input #storeName />
+  </label>
+  <label>Store location:
+    <input #storeLoc />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(storeName.value, storeLoc.value); storeName.value=''">
+    add
+  </button>
+</div>
