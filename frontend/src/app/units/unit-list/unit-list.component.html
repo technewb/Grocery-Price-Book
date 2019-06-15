@@ -1,0 +1,18 @@
+<div *ngIf="units">
+  <ul>
+    <li id="unit-list" *ngFor="let unit of units">
+      <a routerLink="/units/{{unit.id}}">{{unit.name}}</a>
+      <button class="delete" title="delete unit" (click)="delete(unit)">x</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <label>Unit name:
+    <input #unitName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(unitName.value); unitName.value=''">
+    add
+  </button>
+</div>
