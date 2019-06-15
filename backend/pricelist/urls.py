@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from pricelist.views import CategoryViewSet, api_root, FoodViewSet, StoreViewSet
+from pricelist.views import CategoryViewSet, api_root, FoodViewSet, StoreViewSet, UnitViewSet
 from . import views
 from rest_framework.routers import DefaultRouter
 
@@ -11,6 +11,7 @@ router = DefaultRouter()
 router.register(r'categories', views.CategoryViewSet)
 router.register(r'food', views.FoodViewSet)
 router.register(r'stores', views.StoreViewSet)
+router.register(r'units', views.UnitViewSet)
 
 # Index of api at api, and includes registered routers
 urlpatterns = [
