@@ -5,12 +5,12 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [
   {
-    // Main page goes to category list
+    // Main page goes to store list
     path: '',
     component: StoreListComponent
   },
   {
-    // Main page goes to category list
+    // Goes to store details
     path: ':id',
     component: StoreDetailComponent
   },
