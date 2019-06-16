@@ -33,3 +33,11 @@ export interface IStore extends IModel {
     name: string
     location: string
 }
+
+/**
+ * Unit Model interface extended by IModel
+ * @param name: string
+ */
+export interface IUnit extends IModel {
+    name: string;
+}

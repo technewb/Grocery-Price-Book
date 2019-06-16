@@ -4,6 +4,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { Category } from './categories/category';
 import { Food } from './food/food';
 import { Store } from './stores/store';
+import { Unit } from './units/unit';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -42,6 +43,7 @@ describe('Model Classes', () => {
   let categoryObj: Category;
   let foodObj: Food;
   let storeObj: Store;
+  let unitObj: Unit;
 
   it('should create new Category object', () => {
     categoryObj = new Category({id: 1, name: 'Produce'});
@@ -61,6 +63,12 @@ describe('Model Classes', () => {
     expect(storeObj.id).toBe(3);
     expect(storeObj.name).toBe('Kroger');
     expect(storeObj.location).toBe('Houston, TX #3102');
+  })
+
+  it('should create new Unit object', () => {
+    unitObj = new Unit({id: 5, name: "lb"});
+    expect(unitObj.id).toBe(5);
+    expect(unitObj.name).toBe('lb');
   })
 
 })
