@@ -1,0 +1,10 @@
+<div *ngIf="prices">
+  <ul>
+    <li id="price-list" *ngFor="let price of prices">
+      <a routerLink="/prices/{{price.id}}">
+        ${{price.price}} - {{price.food_info.name}} from {{price.store_info.name}} ({{price.store_info.location}})
+      </a>
+      <button class="delete" title="delete category" (click)="delete(category)">x</button>
+    </li>
+  </ul>
+</div>

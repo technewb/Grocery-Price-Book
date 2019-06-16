@@ -1,0 +1,42 @@
+<button (click)="goBack()">go back</button>
+<div *ngIf="price">
+  <h2>{{price.food_info.name | uppercase}} Details</h2>
+  <div>
+    <span>id: </span>{{price.id}}
+  </div>
+  <div>
+    <!-- TODO: Pass date binding to input-->
+    <label>Date:
+        <input type="date" />
+      </label>
+    <label>Food:
+      <select [(ngModel)]="price.food">
+        <option *ngFor="let f of food" [value]="f.id">{{f.name}}</option>
+      </select>
+    </label>
+    <label>Store:
+        <select [(ngModel)]="price.store">
+          <option *ngFor="let store of stores" [value]="store.id">{{store.name}} ({{store.location}})</option>
+        </select>
+    </label>
+    <label>Amount:
+      <input type="number" step="any" [value]="price.amount" />
+    </label>
+    <label>Unit:
+        <select [(ngModel)]="price.unit">
+          <option *ngFor="let unit of units" [value]="unit.id">{{unit.name}}</option>
+        </select>
+    </label>
+    <label>Price:
+      <input type="number" step="any" [value]="price.price" />
+    </label>
+    <label>On Sale:
+      <input type="checkbox" [checked]="price.on_sale" />
+    </label>
+    <!-- TODO: Pass date binding to input-->
+    <label>Sale Expiration:
+      <input type="date" />
+    </label>
+    <button (click)="save()">save</button>
+  </div>
+</div>
