@@ -9,7 +9,7 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('url', 'id', 'name')
+        fields = ('id', 'name')
 
 class FoodSerializer(serializers.ModelSerializer):
     """
@@ -24,7 +24,7 @@ class FoodSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Food
-        fields = ('url', 'id', 'name', 'category_id', 'category')
+        fields = ('id', 'name', 'category_id', 'category')
 
 # TODO: Check if need 
 class FoodListingField(serializers.RelatedField):
@@ -38,7 +38,7 @@ class StoreSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Store
-        fields = ('url', 'id', 'name', 'location')
+        fields = ('id', 'name', 'location')
 
 # TODO: Check if need 
 class StoreListingField(serializers.RelatedField):
@@ -52,7 +52,7 @@ class UnitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Unit
-        fields = ('url', 'id', 'name')
+        fields = ('id', 'name')
 
 # TODO: Check if need 
 class UnitListingField(serializers.RelatedField):
@@ -70,5 +70,5 @@ class PriceSerializer(serializers.ModelSerializer):
     class Meta:
         # TODO: Fix is_sale_expired
         model = Price
-        fields = ('url', 'store', 'store_info', 'food', 'food_info', 'price', 'on_sale',
+        fields = ('store', 'store_info', 'food', 'food_info', 'price', 'on_sale',
             'date', 'expiration_date', 'unit', 'unit_info', 'amount')
