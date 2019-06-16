@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from api.serializers import CategorySerializer, FoodSerializer, StoreSerializer, UnitSerializer
-from pricelist.models import Category, Food, Store, Unit
+from api.serializers import CategorySerializer, FoodSerializer, StoreSerializer, UnitSerializer, PriceSerializer
+from pricelist.models import Category, Food, Store, Unit, Price
 
 
 def index(request, path=''):
@@ -66,3 +66,11 @@ class UnitViewSet(viewsets.ModelViewSet):
     """
     queryset = Unit.objects.all()
     serializer_class = UnitSerializer
+
+#Defines view behavior for Price model
+class PriceViewSet(viewsets.ModelViewSet):
+    """
+    Provides basic CRUD for Price model
+    """
+    queryset = Price.objects.all()
+    serializer_class = PriceSerializer
