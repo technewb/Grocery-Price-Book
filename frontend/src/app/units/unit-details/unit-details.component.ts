@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Unit } from '../unit';
+import { ActivatedRoute } from '@angular/router';
+import { GenericService } from '../../generic.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-unit-details',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UnitDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() unit: Unit;
 
-  ngOnInit() {
+  // Endpoints
+  protected unitEndpoint = 'units';
+
+  constructor(
+    private route: ActivatedRoute,
+    private genericService: GenericService,
+    private location: Location
+  ) { }
+
+  ngOnInit(): void {
+    // Gets id from route parameter
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    // Gets info and populates component via id from route
+    this.genericService.getById<Unit>(this.unitEndpoint, id)
+      .subscribe(unit => this.unit = unit);
+  }
+
+  save(): void {
+    this.genericService.updateById<Unit>(this.unit, this.unitEndpoint, this.unit.id)
+      .subscribe();
+  }
+
+  // Go back to previous location
+  goBack(): void {
+    this.location.back();
   }
 
 }
