@@ -58,4 +58,9 @@ export class PriceDetailsComponent implements OnInit {
       .subscribe(food => this.food = food);
   }
 
+  save(): void {
+    this.genericService.updateById(this.price, this.priceEndpoint, this.price.id)
+      .subscribe();
+  }
+
 }
