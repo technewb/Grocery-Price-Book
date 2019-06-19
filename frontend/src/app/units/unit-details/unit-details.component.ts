@@ -34,6 +34,7 @@ export class UnitDetailsComponent implements OnInit {
   save(): void {
     this.genericService.updateById<Unit>(this.unit, this.unitEndpoint, this.unit.id)
       .subscribe();
+    this.goBack();
   }
 
   // Go back to previous location

@@ -61,6 +61,7 @@ export class PriceDetailsComponent implements OnInit {
   save(): void {
     this.genericService.updateById(this.price, this.priceEndpoint, this.price.id)
       .subscribe();
+    this.goBack();
   }
 
 }
