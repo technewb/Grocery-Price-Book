@@ -48,10 +48,10 @@ export interface IUnit extends IModel {
 export interface IPrice extends IModel {
     store: number;
     food: number;
-    price: Number;
+    price: number;
     on_sale: boolean;
     date: Date;
     expiration_date: Date;
     unit: number;
-    amount: Number;
+    amount: number;
 }

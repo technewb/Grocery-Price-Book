@@ -4,12 +4,12 @@ export class Price implements IPrice {
     id: number;
     store: number;
     food: number;
-    price: Number;
+    price: number;
     on_sale: boolean;
     date: Date;
     expiration_date: Date;
     unit: number;
-    amount: Number;
+    amount: number;
 
     constructor(props: IPrice) {
         Object.keys(props).forEach(prop => {
