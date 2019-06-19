@@ -7,7 +7,7 @@
   <div>
     <!-- TODO: Pass date binding to input-->
     <label>Date:
-        <input type="date" />
+        <input type="date" [ngModel]="price.date"/>
       </label>
     <label>Food:
       <select [(ngModel)]="price.food">
@@ -35,7 +35,7 @@
     </label>
     <!-- TODO: Pass date binding to input-->
     <label>Sale Expiration:
-      <input type="date" />
+      <input type="date" [ngModel]="price.expiration_date"/>
     </label>
     <button (click)="save()">save</button>
   </div>
