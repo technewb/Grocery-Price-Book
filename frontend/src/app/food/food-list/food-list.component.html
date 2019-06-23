@@ -5,7 +5,7 @@
     </li>
   </ul> -->
 
-  <ul *ngFor="let category of categoriesUsing">
+  <ul *ngFor="let category of filteredCategories">
       {{category.name}}
         <div *ngFor="let f of food">
             <li *ngIf="f.category_id === category.id">
