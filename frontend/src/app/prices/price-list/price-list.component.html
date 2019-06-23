@@ -2,9 +2,9 @@
   <ul>
     <li id="price-list" *ngFor="let price of prices">
       <a routerLink="/prices/{{price.id}}">
-        ${{price.price}} - {{price.food_info.name}} from {{price.store_info.name}} ({{price.store_info.location}})
+        ${{price.price}} - {{price.food_info.name}} from {{price.store_info.name}} ({{price.store_info.location}}) {{price.pricePer}}
       </a>
-      <button class="delete" title="delete category" (click)="delete(category)">x</button>
+      <button class="delete" title="delete price" (click)="delete(price)">x</button>
     </li>
   </ul>
 </div>
@@ -36,7 +36,7 @@
   </label>
   <label>On Sale:
     <input #sale type="checkbox" />
-    <label>Entry Date:
+    <label>Expiration Date:
       <input #expirationDate type="date"/>
     </label>
   </label>

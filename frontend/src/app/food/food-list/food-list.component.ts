@@ -51,7 +51,6 @@ export class FoodListComponent implements OnInit {
             this.foodCategories[index].count += 1;
           }
         });
-        console.log(this.foodCategories);
         
         // Run after getFood finishes in order to utilize data from food
         this.getCategories()
