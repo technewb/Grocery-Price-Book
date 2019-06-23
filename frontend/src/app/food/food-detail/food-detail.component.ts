@@ -43,6 +43,7 @@ export class FoodDetailComponent implements OnInit {
   save(): void {
     this.genericService.updateById(this.food, this.foodEndpoint, this.food.id)
       .subscribe();
+    this.goBack();
   }
 
   goBack(): void {

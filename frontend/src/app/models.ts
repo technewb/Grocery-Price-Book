@@ -41,3 +41,17 @@ export interface IStore extends IModel {
 export interface IUnit extends IModel {
     name: string;
 }
+
+/**
+ * Price Model interface extended by IModel
+ */
+export interface IPrice extends IModel {
+    store: number;
+    food: number;
+    price: number;
+    on_sale: boolean;
+    date: Date;
+    expiration_date: Date;
+    unit: number;
+    amount: number;
+}

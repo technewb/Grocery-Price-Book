@@ -1,0 +1,44 @@
+<div *ngIf="prices">
+  <ul>
+    <li id="price-list" *ngFor="let price of prices">
+      <a routerLink="/prices/{{price.id}}">
+        ${{price.price}} - {{price.food_info.name}} from {{price.store_info.name}} ({{price.store_info.location}})
+      </a>
+      <button class="delete" title="delete category" (click)="delete(category)">x</button>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <label>Entry Date:
+    <input #date type="date" ngModel/>
+  </label>
+  <label>Food:
+    <select #foodSelect>
+      <option *ngFor="let f of food" [value]="f.id">{{f.name}}</option>
+    </select>
+  </label>
+  <label>Store:
+    <select #storeSelect>
+      <option *ngFor="let store of stores" [value]="store.id">{{store.name}} ({{store.location}})</option>
+    </select>
+  </label>
+  <label>Amount:
+    <input #amount type="number" step="any" />
+  </label>
+  <label>Unit:
+    <select #unitSelect>
+      <option *ngFor="let unit of units" [value]="unit.id">{{unit.name}}</option>
+    </select>
+  </label>
+  <label>Price:
+    <input #price type="number" step="any" />
+  </label>
+  <label>On Sale:
+    <input #sale type="checkbox" />
+    <label>Entry Date:
+      <input #expirationDate type="date"/>
+    </label>
+  </label>
+    <button (click)="add(date.value, foodSelect.value, storeSelect.value, amount.value, unitSelect.value, price.value, sale.value, expirationDate.value); date.value=''; foodSelect.value=''; storeSelect.value=''; amount.value=''; unitSelect.value=''; price.value=''; sale.value=''; expirationDate.value='';">add</button>
+</div>

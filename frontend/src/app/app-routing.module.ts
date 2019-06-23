@@ -27,6 +27,10 @@ const routes: Routes = [
     {
         path: 'units',
         loadChildren: () => import('./units/units.module').then(mod => mod.UnitsModule)
+    },
+    {
+        path: 'prices',
+        loadChildren: () => import('./prices/prices.module').then(mod => mod.PricesModule)
     }
 ];
 

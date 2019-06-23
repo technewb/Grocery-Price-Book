@@ -36,6 +36,7 @@ export class CategoryDetailComponent implements OnInit {
   save(): void {
     this.genericService.updateById(this.category, this.catEndpoint, this.category.id)
       .subscribe();
+    this.goBack();
   }
 
   /** Go back to previous location */

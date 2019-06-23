@@ -34,6 +34,7 @@ export class StoreDetailComponent implements OnInit {
   save(): void {
     this.genericService.updateById(this.store, this.storeEndpoint, this.store.id)
       .subscribe();
+    this.goBack();
   }
 
   /** Go back to previous location */
