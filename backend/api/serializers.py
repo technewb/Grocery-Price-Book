@@ -70,5 +70,5 @@ class PriceSerializer(serializers.ModelSerializer):
     class Meta:
         # TODO: Fix is_sale_expired
         model = Price
-        fields = ('id', 'store', 'store_info', 'food', 'food_info', 'price', 'on_sale',
+        fields = ('id', 'store', 'store_info', 'food', 'food_info', 'brand', 'price', 'on_sale',
             'date', 'expiration_date', 'unit', 'unit_info', 'amount')
