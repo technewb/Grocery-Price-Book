@@ -20,7 +20,7 @@
         </select>
     </label>
     <label>Amount:
-      <input type="number" step="any" [value]="price.amount" />
+      <input type="number" step="any" [(ngModel)]="price.amount" />
     </label>
     <label>Unit:
         <select [(ngModel)]="price.unit">

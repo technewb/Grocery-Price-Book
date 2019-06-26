@@ -4,6 +4,8 @@ import { GenericService } from 'src/app/generic.service';
 import { Store } from 'src/app/stores/store';
 import { Unit } from 'src/app/units/unit';
 import { Food } from 'src/app/food/food';
+import { unit } from "mathjs";
+import { combineLatest } from "rxjs";
 
 @Component({
   selector: 'app-price-list',
@@ -33,50 +35,90 @@ export class PriceListComponent implements OnInit {
   constructor(private genericService: GenericService) { }
 
   ngOnInit() {
-    this.getPrices();
+    this.getData();
   }
 
   /**
-   * Grabs data from api and puts it into prices
+   * Grabs data from api all at once, bind it to object arrays, and then runs getCheapest function
    */
-  getPrices() {
-    this.genericService.getAll<Price>(this.priceEndpoint)
-      .subscribe(prices => {
-        this.prices = prices
-        
-        prices.forEach(p => {
-          if(!this.availableFood.find(f => p.food === f.id)) {
-            let index = this.availableFood.push({'id': p.food})
-            console.log(index);
+  getData() {
+    combineLatest(
+      this.genericService.getAll<Price>(this.priceEndpoint),
+      this.genericService.getAll<Store>(this.storeEndpoint),
+      this.genericService.getAll<Unit>(this.unitEndpoint),
+      this.genericService.getAll<Food>(this.foodEndpoint))
+        .subscribe(
+          ([prices, stores, units, food]) => {
+            this.prices = prices;
+            this.stores = stores;
+            this.units = units;
+            this.food = food;
+  
+            this.getCheapest();
           }
-        })
-
-        console.log(this.availableFood);
-
-        this.getData();
-      });
+        );
   }
 
-  getData() {
-    this.genericService.getAll<Store>(this.storeEndpoint)
-      .subscribe(stores => this.stores = stores);
+  /**
+   * Adds data to availableFood for binding on html page, 
+   * compares prices, and will update according to cheapest item available
+   */
+  getCheapest() {
 
-    this.genericService.getAll<Unit>(this.unitEndpoint)
-      .subscribe(units => this.units = units);
+    // Loop through array of Price objects 
+    this.prices.forEach(p => {
 
-    this.genericService.getAll<Food>(this.foodEndpoint)
-      .subscribe(food => {
-        this.food = food
+      // Find data for unit, food, and store connected to prices data
+      let unitObj = this.units[this.units.findIndex(u => u.id === p.unit)];
+      let foodObj = this.food[this.food.findIndex(f => f.id === p.food)];
+      let storeObj = this.stores[this.stores.findIndex(s => s.id === p.store)];
 
-        food.forEach(f => {
-          if(this.availableFood.find(a => a.id === f.id)) {
-            let index = this.availableFood.findIndex(a => a.id === f.id);
-            this.availableFood[index].name = f.name;
-          }
-        })
-      
-      console.log(this.availableFood);
-      });
+      // Find index to see if food was already added to availabeFood array
+      let index = this.availableFood.findIndex(f => p.food === f.food.id);
+
+      // If food listing not already in availableFood array, push data to array
+      if(index < 0) {
+        this.availableFood.push({'price': p, 'store': storeObj, 'food': foodObj, 'unit': unitObj, 'lowest_price_per': Math.round((p.price / p.amount) * 100) / 100})
+      } else {
+
+        // If found, assign obj the location of availableFood index
+        let pricePer;
+        let obj = this.availableFood[index];
+
+        // If unit measurement can be converted to unit object and compared, then assign pricePer with convertedAmount
+        // If error, then assign pricePer without conversion and does not utilize unit object
+        try {
+          // Create math.unit object with format: number unit-of-measurement' (ex. '12 lbs')
+          let currentAmountUnit = unit(`${p.amount} ${unitObj.name}`);
+
+          // Converts the currentAmountUnit to unit of measurement of existing item in availableFood
+          // Conversion will allow proper comparsion if units of measurement are different from current price and previous price objects
+          // After converting, it will turn into a number instead of an math.unit object
+          // (ex. '12 lbs' to 'oz') 
+          let convertedAmount = currentAmountUnit.toNumber(obj.unit.name);
+
+          // Finds price per unit of measurement of convertedAmount, which rounds to second decimal
+          pricePer = Math.round((p.price / convertedAmount) * 100) / 100;
+        } catch(e) {
+          // TODO: Deal with units that cannot be converted
+          console.log(e);
+          // Finds price per amount for a unit of measurement
+          pricePer = Math.round((p.price / p.amount) * 100) / 100;
+        } 
+
+        // Checks if converted (or non-converted) amount is cheaper than previous price per calculation
+        // If it does, then update availableFood item with cheapest amount's information
+        if(pricePer < obj.lowest_price_per) {
+          obj.price = p;
+          obj.unit = unitObj;
+          obj.lowest_price_per = Math.round((p.price / p.amount) * 100) / 100;;
+          obj.store = storeObj;
+          obj.store_id = p.store
+        }
+      }
+    })
+
+    console.log(this.availableFood);
   }
 
   

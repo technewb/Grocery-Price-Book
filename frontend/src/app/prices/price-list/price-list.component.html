@@ -1,8 +1,9 @@
 <div *ngIf="prices">
   <ul>
-    <li id="price-list" *ngFor="let price of prices">
+    <li id="price-list" *ngFor="let price of availableFood">
       <a routerLink="/prices/{{price.id}}">
-        ${{price.price}} - {{price.food_info.name}} from {{price.store_info.name}} ({{price.store_info.location}}) {{price.pricePer}}
+        ${{price.lowest_price_per}}/{{price.unit.name}} - {{price.food.name}} from {{price.store.name}} ({{price.store.location}}) <br> 
+        [{{price.price.amount}}/{{price.unit.name}} for {{price.price.price}}] | SALE: {{price.price.on_sale}}
       </a>
       <button class="delete" title="delete price" (click)="delete(price)">x</button>
     </li>
