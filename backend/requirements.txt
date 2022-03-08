@@ -5,7 +5,7 @@ Django==2.2.4
 django-cors-headers==2.5.3
 django-filter==2.1.0
 djangorestframework==3.9.3
-httpie==1.0.3
+httpie==3.1.0
 idna==2.8
 Pygments==2.3.1
 pytz==2019.1
